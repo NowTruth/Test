@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test05
+Bundle-SymbolicName: Test05
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: Test05
+Bundle-RequiredExecutionEnvironment: JavaSE-11

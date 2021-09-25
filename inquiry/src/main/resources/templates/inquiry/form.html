@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<h1>お問い合わせフォーム</h1>
+	
+	<!-- 登録完了フラッシュメッセージ -->
+	<h2 th:text="${flashSuccessMsg}"></h2> 
+
+	<!-- 入力内容をconfirm.htmlに渡す  -->
+	<!-- InquiryFormインスタンスをinquiryformという名前で渡している -->
+	<form method="post" th:action="@{/inquiry/confirm}"
+		th:object="${inquiryForm}">
+
+		<!-- 氏名フォーマット -->
+		<label for="name">氏名：</label> 
+		<input type="text" name="name" id="name"
+			placeholder="氏名" th:value="*{name}"><br />
+			
+		<!-- 氏名の入力に関するエラーメッセージ表示 -->
+		<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+
+
+		<!-- メールアドレスフォーマット -->
+		<label for="email">Email：</label> 
+		<input type="text" name="email"
+			id="email" th:value="*{email}" placeholder="Email"><br />
+			
+		<!-- メールアドレスの入力に関するエラーメッセージ表示 -->
+		<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+
+		<!-- 内容フォーマット -->
+		<label for="comment">内容：</label>
+		<textarea name="comment" id="comment" cols="40" rows="8"
+			th:field="*{comment}"></textarea>
+			
+		<!-- 内容の入力に関するエラーメッセージ表示 -->
+		<div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></div>
+
+		<!-- 確認ボタン -->
+
+		<button type="submit" name="confirm" value="確定">確認</button>
+
+
+	</form>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>アンケートフォーム</title>
+</head>
+<h1>アンケートフォーム</h1>
+
+<!-- 登録完了フラッシュメッセージ -->
+	<h2 th:text="${flashSuccessMsg}"></h2> 
+
+<body>
+	<!-- 入力内容をconfirm.htmlに渡す  -->
+	<!-- SurveyFormインスタンスをsurveyformという名前で渡している -->
+	<form method="post" th:action="@{/survey/confirm}"
+		th:object="${surveyForm}">
+
+		<!-- 年齢フォーマット -->
+		<label for="age">年齢：</label> 
+		<input type="number" name="age" id="age" th:value="*{age}"><br />
+
+		<!-- 年齢の入力に関するエラーメッセージ表示 -->
+		<div th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+
+
+		<!-- 満足度フォーマット -->
+		<label for="satisfaction">満足度：</label> 
+		<input type="radio" name="satisfaction" id="satisfaction1" th:field="*{satisfaction}" value="1">1
+		<input type="radio" name="satisfaction" id="satisfaction2" th:field="*{satisfaction}" value="2">2 
+		<input type="radio" name="satisfaction" id="satisfaction3" th:field="*{satisfaction}" value="3">3
+		<input type="radio" name="satisfaction" id="satisfaction4" th:field="*{satisfaction}" value="4">4 
+		<input type="radio" name="satisfaction" id="satisfaction5" th:field="*{satisfaction}" value="5">5
+		
+		<br />
+
+		<!-- 満足度の入力に関するエラーメッセージ表示 -->
+		<div th:if="${#fields.hasErrors('satisfaction')}"
+			th:errors="*{satisfaction}"></div>
+
+		<!-- コメントフォーマット -->
+		<label for="comment">コメント：</label>
+		<textarea name="comment" id="comment" cols="30" th:field="*{comment}"></textarea>
+		<br />
+
+		<!-- コメントの入力に関するエラーメッセージ表示 -->
+		<div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></div>
+
+		<!-- 確認ボタン -->
+		<button type="submit" name="confirm" value="確定">確認</button>
+	</form>
+
+</body>
+</html>

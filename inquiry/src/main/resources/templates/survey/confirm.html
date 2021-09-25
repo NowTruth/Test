@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<h1>アンケート内容確認</h1>
+<h4>入力内容をご確認ください</h4>
+
+<body>
+
+	<div th:object="${surveyForm}">
+		<!-- 画面表示 -->
+		<p>
+			年齢：<span th:text="*{age}"></span>
+		</p>
+		<p>
+			満足：<span th:text="*{satisfaction}"></span>
+		</p>
+		<p>
+			コメント：<span th:text="*{comment}"></span>
+		</p>
+
+		<!-- 確定 -->
+		<form method="POST" th:action="@{/survey/complete}">
+
+			<input type="hidden" name="age" th:value="*{age}"></input> <input
+				type="hidden" name="satisfaction" th:value="*{satisfaction}"></input>
+			<input type="hidden" name="comment" th:field="*{comment}"></input>
+
+			<button type="submit" name="complete" value="確定">確定</button>
+		</form>
+
+
+		<!-- 戻る -->
+		<form method="POST" th:action="@{/survey/form}">
+
+			<input type="hidden" name="age" th:value="*{age}"></input> <input
+				type="hidden" name="satisfaction" th:value="*{satisfaction}"></input>
+			<input type="hidden" name="comment" th:field="*{comment}"></input>
+
+			<button type="submit" name="back" value="戻る">戻る</button>
+		</form>
+
+	</div>
+</body>
+</html>

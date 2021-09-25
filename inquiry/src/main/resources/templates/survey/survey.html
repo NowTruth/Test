@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<h1>アンケート結果</h1>
+	
+	<table class="table table-striped">
+	<thead>
+	<tr>
+	<th>id</th>
+	<th>年齢</th>
+	<th>満足度</th>
+	<th>内容</th>
+	<th>登録日時</th>
+	</tr>
+	</thead>
+	
+	<tbody th:each="survey:${surveyList}">
+	<tr>
+	 <td th:text="${survey.id}"></td>
+	 <td th:text="${survey.age}"></td>
+	 <td th:text="${survey.satisfaction}"></td>
+	 <td th:text="${survey.contents}"></td>
+	 <td th:text="${survey.created}"></td>
+	</tr>
+	</tbody>
+	</table>
+
+</body>
+</html>

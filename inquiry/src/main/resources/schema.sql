@@ -1,0 +1,20 @@
+CREATE TABLE inquiry
+(
+  id INT AUTO_INCREMENT, 
+  name VARCHAR(20) NOT NULL, 
+  email VARCHAR(100) NOT NULL,
+  contents VARCHAR(500) NOT NULL, 
+  created DATETIME NOT NULL, 
+  PRIMARY KEY(id)
+);
+
+
+CREATE TABLE survey
+(
+ id INT AUTO_INCREMENT,
+ age INT(3) NOT NULL,
+ satisfaction INT(2) NOT NULL,
+ contents VARCHAR(500) NOT NULL,
+ created DATETIME NOT NULL,
+ PRIMARY KEY(id)
+)
